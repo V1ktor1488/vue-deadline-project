@@ -1,20 +1,27 @@
-<script setup>
-import {ref,onMounted} from "vue"
-import axios from "axios"
-
-const students = ref([])
-
-onMounted(async ()=>{
-  const res = await axios.get("/api/students")
-  students.value = res.data
-})
-</script>
-
 <template>
-<div>
-<h1>Students</h1>
-<div v-for="s in students" :key="s.id">
-  <router-link :to="'/details/'+s.id">{{s.name}}</router-link>
-</div>
-</div>
+  <div>
+    <h1>Students</h1>
+    <ul>
+      <li v-for="student in students" :key="student.id">{{ student.name }}</li>
+    </ul>
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      students: []
+    };
+  },
+  mounted() {
+    // fetch към backend на порт 3000
+    fetch('http://localhost:3000/students')
+      .then(res => res.json())
+      .then(data => {
+        this.students = data;
+      })
+      .catch(err => console.error('Error fetching students:', err));
+  }
+};
+</script>

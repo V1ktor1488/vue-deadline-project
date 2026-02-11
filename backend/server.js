@@ -1,27 +1,51 @@
-const express = require("express");
+// backend/server.js
+const express = require('express');
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-let user = null;
-
-let students=[
- {id:1,name:"Ivan"},
- {id:2,name:"Maria"}
+// --- Example data ---
+let students = [
+    { id: 1, name: "Ivan" },
+    { id: 2, name: "Maria" }
 ];
 
-app.get("/api/students",(req,res)=>{
- res.json(students);
+let teachers = [
+    { id: 1, name: "Petar" },
+    { id: 2, name: "Elena" }
+];
+
+// --- Routes ---
+
+// Get all students
+app.get('/students', (req, res) => {
+    res.json(students);
 });
 
-app.get("/api/is-logged",(req,res)=>{
- if(user) res.json({name:user});
- else res.status(401).json({});
+// Get all teachers
+app.get('/teachers', (req, res) => {
+    res.json(teachers);
 });
 
-app.post("/api/login",(req,res)=>{
- user=req.body.name;
- res.json({success:true});
+// Example login route
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    if (username === 'admin' && password === '1234') {
+        res.json({ success: true, message: 'Login successful!' });
+    } else {
+        res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
 });
 
-app.listen(3000,()=>console.log("API running"));
+// Test route
+app.get('/', (req, res) => {
+    res.send('API running');
+});
+
+// --- Start server ---
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`API running on port ${PORT}`);
+});
