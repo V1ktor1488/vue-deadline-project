@@ -1,27 +1,36 @@
 <template>
   <div>
-    <h1>Students</h1>
     <ul>
-      <li v-for="student in students" :key="student.id">{{ student.name }}</li>
+      <li v-for="student in students" :key="student.id">
+        <router-link :to="`/details/${student.id}`">{{ student.name }}</router-link>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'Home',
   data() {
     return {
       students: []
-    };
+    }
   },
-  mounted() {
-    // fetch към backend на порт 3000
+  created() {
     fetch('http://localhost:3000/students')
       .then(res => res.json())
-      .then(data => {
-        this.students = data;
-      })
-      .catch(err => console.error('Error fetching students:', err));
+      .then(data => this.students = data)
+      .catch(err => console.error(err));
   }
-};
+}
 </script>
+
+<style scoped>
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin: 5px 0;
+}
+</style>
