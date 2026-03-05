@@ -1,0 +1,9 @@
+[submodule "Documents/misty_voice_control_project/misty_wrapper"]
+	path = Documents/misty_voice_control_project/misty_wrapper
+	url = https://github.com/MistyCommunity/Wrapper-Python.git
+[submodule "Documents/misty_voice_control_project/python_sdk"]
+	path = Documents/misty_voice_control_project/python_sdk
+	url = https://github.com/MistyCommunity/Python-SDK.git
+[submodule "Documents/misty_voice_assistant/python_sdk"]
+	path = Documents/misty_voice_assistant/python_sdk
+	url = https://github.com/MistyCommunity/Python-SDK.git
