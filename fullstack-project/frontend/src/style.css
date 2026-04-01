@@ -1,0 +1,155 @@
+/* frontend/src/style.css */
+:root {
+  --primary-color: #6366f1; /* Свежо индиго */
+  --primary-hover: #4f46e5;
+  --accent-color: #ec4899;  /* Розов акцент */
+  --bg-color: #f8fafc;      /* Много светло синьо-сиво за фон */
+  --text-color: #334155;
+  --card-bg: #ffffff;
+  --danger-color: #ef4444;
+  --danger-hover: #dc2626;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 10px 15px -3px rgba(99, 102, 241, 0.2); /* Цветна сянка */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 20px 20px; /* Лек модерен детайл на фона */
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+/* Бутони */
+button, .button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+button:active, .button:active {
+  transform: translateY(2px);
+}
+
+/* Основен бутон */
+button, .button-primary {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+}
+
+button:hover, .button-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Червен бутон */
+.button-danger {
+  background-color: var(--danger-color);
+  color: white;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+}
+
+.button-danger:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Форми */
+form {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  max-width: 500px;
+  margin: 0 auto;
+  border-top: 4px solid var(--accent-color); /* Розов акцент отгоре */
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fefeff;
+}
+
+/* Студентски карти */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--primary-color); /* Цветна лента отляво */
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-left-color: var(--accent-color); /* Сменя цвета при посочване */
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #1e293b;
+}
+
+.card a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Страница Детайли */
+.details-view {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--primary-color);
+}
+
+.details-view p {
+  font-size: 18px;
+  border-bottom: 1px dashed #cbd5e1;
+  padding: 12px 0;
+  margin: 0;
+}
